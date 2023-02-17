@@ -1,4 +1,8 @@
 #!/bin/bash
+
+BUCK="$(aws s3 ls)"
+echo "BUCK=" $BUCK
+
 ROLE_ARN="$(aws ecs describe-task-definition --task-definition AG-Power --region me-south-1 | jq .taskDefinition.executionRoleArn)"
 echo "ROLE_ARN= " $ROLE_ARN
 
