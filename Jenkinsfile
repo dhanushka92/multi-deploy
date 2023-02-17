@@ -23,7 +23,7 @@ pipeline {
        stage('Update task definition'){
            steps{
                
-               withAWS(credentials: 'devkeys', region: 'me-south-1') {
+               withAWS(credentials: 'uatkeys', region: 'me-south-1') {
                script{
                     sh 'aws s3 ls'
                }
