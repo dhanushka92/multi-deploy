@@ -6,7 +6,6 @@ pipeline {
          AWS_DEFAULT_REGION = "me-south-1"
          IMAGE_REPO_NAME= "ag-power"
          registry= "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-         registryCredential='devkeys'
          dockerImage=''
          IMAGE_TAG="${env.BUILD_ID}"
          CLUSTER_NAME= "AG-Website"
@@ -22,7 +21,7 @@ pipeline {
                
        stage('Update task definition'){
            steps{
-               withAWS(credentials: 'devkeys', region: 'me-south-1') {
+               withAWS(credentials:'devkeys', region: 'me-south-1') {
                script{
                     sh 'aws s3 ls'
                     sh './script.sh'
